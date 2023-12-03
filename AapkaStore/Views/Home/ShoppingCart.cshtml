@@ -1,0 +1,100 @@
+﻿@using AapkaStore.Models
+
+@{
+    double amount = 0;
+    List<CartItem> Cart = ViewBag.Cart;
+    
+    ViewBag.Title = "Categories";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<!-- Shopping Cart Section Begin -->
+<section class="shopping-cart spad">
+    <div class="container">
+        <div class="row">
+            <hr />
+            <div class="col-lg-12">
+                <hr />
+                <div>
+                    <table class="table table-bordered text-center align-middle">
+                        <thead>
+                            <tr style="align-content:center">
+                                <th>Image</th>
+                                <th>Product Name</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                                <th><i class=""></i>Remove</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Cart)
+                            {
+                                amount += (@item.item.SalePrice * item.quantity);
+                                <tr>
+                                    <td><img style="width:100px" src="/AppData/@item.item.Image1" alt=""></td>
+                                    <td>
+                                        <h5>@item.item.Name</h5>
+                                    </td>
+                                    <td>Rs. @item.item.SalePrice</td>
+                                    <td>
+                                        <span class="btn btn-sm btn-danger" onclick="window.location.replace('/Home/QtyMinus/' + @item.item.ItemId);">-</span>
+                                        <span><label style="width:60px;padding:1px;border: 2px solid green" type="text">@item.quantity</label></span> KG(s)
+                                        <span class="btn btn-sm btn-success" onclick="window.location.replace('/Home/QtyPlus/' + @item.item.ItemId);">+</span>
+
+                                    </td>
+                                    <td class="total-price first-row">Rs. @(@item.item.SalePrice * item.quantity)</td>
+                                    <td><i class="btn btn-danger fa fa-times" onclick="window.location.replace('/Home/Remove/' + @item.item.ItemId);"></i></td>
+                                </tr>
+
+                            }
+
+                            <tr>
+                                <td colspan="4">
+                                    Sub-Total
+                                </td>
+                                <td>
+                                    Rs. @amount
+                                </td>
+                                <td></td>
+
+                            </tr>
+                            <tr>
+                                <td colspan="4">
+                                    Total
+                                </td>
+                                <td>
+                                    Rs. @amount
+                                </td>
+                                <td></td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 text-right">
+                        <a href="/Home/Items" class="btn btn-danger">Continue shopping</a>
+                        <a href="/Home/Checkout?method=COD" class="btn btn-primary">Chekout (Cash on Delivery)</a>
+                        <a href="/Home/Checkout?method=Online" class="btn btn-success">Chekout (Online Payment)</a>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Shopping Cart Section End -->
+<br />
+<br />
+<br />
+<br />

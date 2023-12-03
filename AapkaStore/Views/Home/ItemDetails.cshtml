@@ -1,0 +1,71 @@
+﻿@model AapkaStore.Models.Item
+
+@{
+    ViewBag.Title = "OrderConfirmed";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<br />
+<br />
+<br />
+<br />
+<hr />
+
+<section class="shopping-cart spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <h3>Item Image</h3>
+                <hr />
+                <img src="/AppData/@Model.Image1" class="img-fluid" alt="user-image">
+
+            </div>
+
+
+            <div class="col-lg-6">
+                <h3>Item Details</h3>
+                <hr />
+                <div>
+                    <table class="table table-bordered">
+                        <tr>
+                            <td>Item Name</td>
+                            <td>@Model.Name</td>
+                        </tr>
+                        <tr>
+                            <td>Category</td>
+                            <td>@Model.CatF.Name</td>
+                        </tr>
+                        <tr>
+                            <td>Ready Quantity</td>
+                            <td>@Model.Quantity</td>
+
+                        </tr>
+                       
+                       
+                        <tr>
+                            <td>Rate</td>
+                            <td>@Model.SalePrice Per KG</td>
+                        </tr>
+
+                    </table>
+                </div>
+
+
+                <a href="/Home/Items" class="btn btn-danger">Go to Back</a>
+                <a href="/Home/AddToCart/@Model.ItemId" class="btn btn-success">Add to Cart</a>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+</section>
+<br />
+<br />
+<br />
+<br />

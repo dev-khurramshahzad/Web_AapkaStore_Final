@@ -1,0 +1,140 @@
+﻿@model AapkaStore.Models.Order
+
+@{
+    double amount = 0;
+
+    ViewBag.Title = "OrderConfirmed";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<br />
+<br />
+<br />
+
+<section class="shopping-cart spad">
+    <br />
+    <br />
+    <br />
+    <br />
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5">
+                <h3>Order Details</h3>
+                <hr />
+
+                <div>
+                    <table class="table table-bordered">
+                        <tr>
+                            <td>Order No. </td>
+                            <td>SW001-00 @Model.OrderId</td>
+                        </tr>
+                        <tr>
+                            <td>Customer Phone</td>
+                            <td>@Model.UserF.Phone</td>
+                        </tr>
+                        <tr>
+                            <td>Customer Email</td>
+                            <td>@Model.UserF.Email</td>
+                        </tr>
+                        <tr>
+                            <td>Customer Address</td>
+                            <td>@Model.UserF.Address</td>
+                        </tr>
+                        <tr>
+                            <td>Customer Name</td>
+                            <td>@Model.UserF.Name</td>
+                        </tr>
+
+
+                        <tr>
+                            <td>Order Date</td>
+                            <td>
+                                @string.Format("{0:dddd, dd MMMM yyyy}", Model.Date)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Order Time</td>
+                            <td>@Model.Time</td>
+                        </tr>
+                        <tr>
+                            <td>Order Status</td>
+                            <td>@Model.Status</td>
+                        </tr>
+
+                    </table>
+                </div>
+            </div>
+
+
+            <div class="col-lg-7 text-right">
+                <h3>Order Items Details</h3>
+                <hr />
+                <div>
+                    <table class="table table-bordered text-center align-middle">
+                        <thead>
+                            <tr style="align-content:center">
+                                <th>Image</th>
+                                <th>Product Name</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in (List<AapkaStore.Models.OrderDetail>)ViewBag.Cart)
+                            {
+                                amount += (@item.ItemF.SalePrice * item.Quantity);
+                                <tr>
+                                    <td><img style="width:100px" src="/AppData/@item.ItemF.Image1" alt=""></td>
+                                    <td>
+                                        <h5>@item.ItemF.Name</h5>
+                                    </td>
+                                    <td>Rs. @item.ItemF.SalePrice</td>
+                                    <td>
+                                        <span><label style="width:60px;padding:1px;border: 2px solid green" type="text">@item.Quantity</label></span> KG(s)
+                                    </td>
+                                    <td>@amount</td>
+                                </tr>
+
+
+                            }
+
+                            <tr>
+                                <td colspan="4">
+                                    Sub-Total
+                                </td>
+                                <td>
+                                    Rs. @amount
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td colspan="4">
+                                    Total
+                                </td>
+                                <td>
+                                    Rs. @amount
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <a href="/Home/" class="btn btn-danger btn-lg text-right">Go to Home</a>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+</section>
+<br />
+<br />
+<br />
+<br />

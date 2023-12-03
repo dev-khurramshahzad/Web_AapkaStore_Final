@@ -1,0 +1,49 @@
+﻿@model IEnumerable<AapkaStore.Models.Item>
+
+@{
+    ViewBag.Title = "Shops";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="teams py-5" id="chefs">
+    <div class="container py-xl-5 py-lg-3">
+        <hr />
+        <h3 class="title-w3ls text-center text-wh mb-5">Our Best Items</h3>
+        <div class="row text-center">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-4 mt-lg-0 mt-5">
+                    <br />
+                    <br />
+                    <div class="team-gd" style="padding:12px;border:2px solid red">
+                        <img style="height:200px;width:100%" src="/AppData/@item.Image1" class="img-fluid" alt="user-image">
+                        <div class="team-info mt-4">
+                            <h5 class="mb-2">@item.CatF.Name</h5>
+                            <h3 class="mb-2">@item.Name</h3>
+                            <p>
+                                <table class="table table-bordered" border="1" style="width:100%">
+                                   
+                                   
+                                    <tr>
+                                        <td>Rate</td>
+                                        <td>@item.SalePrice Per KG</td>
+                                    </tr>
+
+                                </table>
+                            </p>
+                            <ul class="social_section_1info list-unstyled pt-2 mt-4">
+                                <li class="d-inline google">
+                                    <a class="btn btn-primary" href="/Home/AddToCart/@item.ItemId"><span class="fa fa-cart-plus mr-1"></span>Add to Cart</a>
+                                </li>
+                                <li class="d-inline linkedin">
+                                    <a class="btn btn-success" href="/Home/ItemDetails/@item.ItemId"><span class="fa fa-search mr-1"></span>Details</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+

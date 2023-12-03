@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <title>Admin Panel</title>
+
+    <!-- Favicons -->
+    <link href="/Admin/img/favicon.png" rel="icon">
+    <link href="/Admin/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Bootstrap core CSS -->
+    <link href="/Admin/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!--external css-->
+    <link href="/Admin/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <!-- Custom styles for this template -->
+    <link href="/Admin/css/style.css" rel="stylesheet">
+    <link href="/Admin/css/style-responsive.css" rel="stylesheet">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</head>
+
+<body>
+
+    @if (TempData["Message"] != null && (string)TempData["Message"] != "No")
+    {
+        <script type="text/javascript">
+                window.onload = function () {
+                    Swal.fire(
+                        '@TempData["State"]',
+                        '@TempData["Message"]',
+                        '@TempData["State"]')
+                };
+        </script>
+    }
+
+    <section id="container">
+        <!-- **********************************************************************************************************************************************************
+            TOP BAR CONTENT & NOTIFICATIONS
+            *********************************************************************************************************************************************************** -->
+        <!--header start-->
+        <header class="header black-bg">
+            <div class="sidebar-toggle-box">
+                <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+            </div>
+            <!--logo start-->
+            <a href="/Home/Admin" class="logo"><b>Admin<span>Panel</span></b></a>
+            <!--logo end-->
+            <div class="nav notify-row" id="top_menu">
+                
+            </div>
+            <div class="top-menu">
+                <ul class="nav pull-right top-menu">
+                    <li><a class="logout" href="/Users/Logout">Logout</a></li>
+                </ul>
+            </div>
+        </header>
+        <!--header end-->
+        <!-- **********************************************************************************************************************************************************
+            MAIN SIDEBAR MENU
+            *********************************************************************************************************************************************************** -->
+        <!--sidebar start-->
+        <aside>
+            <div id="sidebar" class="nav-collapse ">
+                <!-- sidebar menu start-->
+                <ul class="sidebar-menu" id="nav-accordion">
+                    <li><a href="/Adm_Shops"><i class="fa fa-arrow-right"></i><span>Manage Shops</span></a></li>
+                    <li><a href="/Adm_Categories"><i class="fa fa-arrow-right"></i><span>Manage Categories</span></a></li>
+                    <li><a href="/Adm_Items"><i class="fa fa-arrow-right"></i><span>Manage Products</span></a></li>
+                    <li><a href="/Adm_Users"><i class="fa fa-arrow-right"></i><span>Manage Users</span></a></li>
+                    <li><a href="/Adm_Reports/Index"><i class="fa fa-arrow-right"></i><span>Order Report</span></a></li>
+                    <li><a href="/Adm_Reports/Stock"><i class="fa fa-arrow-right"></i><span>Stock Report</span></a></li>
+                    <li><a href="/Adm_Reports/PLSReport"><i class="fa fa-arrow-right"></i><span>P/L Report</span></a></li>
+                    <li><a href="/Home/Logout"><i class="fa fa-arrow-right"></i><span>Logout</span></a></li>
+
+                </ul>
+                <!-- sidebar menu end-->
+            </div>
+        </aside>
+        <!--sidebar end-->
+        <!-- **********************************************************************************************************************************************************
+            MAIN CONTENT
+            *********************************************************************************************************************************************************** -->
+        <!--main content start-->
+        <section id="main-content">
+            <section class="wrapper site-min-height">
+                <div class="row mt">
+                    <div class="col-lg-12">
+
+                        @RenderBody()
+
+
+                    </div>
+                </div>
+            </section>
+            <!-- /wrapper -->
+        </section>
+        <!-- /MAIN CONTENT -->
+        <!--main content end-->
+    
+
+
+
+    </section>
+    <!-- js placed at the end of the document so the pages load faster -->
+    <script src="/Admin/lib/jquery/jquery.min.js"></script>
+    <script src="/Admin/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/Admin/lib/jquery-ui-1.9.2.custom.min.js"></script>
+    <script src="/Admin/lib/jquery.ui.touch-punch.min.js"></script>
+    <script class="include" type="text/javascript" src="/Admin/lib/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="/Admin/lib/jquery.scrollTo.min.js"></script>
+    <script src="/Admin/lib/jquery.nicescroll.js" type="text/javascript"></script>
+    <!--common script for all pages-->
+    <script src="lib/common-scripts.js"></script>
+    <!--script for this page-->
+
+    @RenderSection("scripts",required:false)
+
+</body>
+
+</html>

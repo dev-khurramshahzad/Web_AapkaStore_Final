@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    input, select {
+        margin: 8px;
+    }
+</style>
+
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<div class="row">
+    <div class=" col-md-4">
+    </div>
+    <div class="col-md-4">
+        <div class="card card-header-pills">
+            <div class="card-header">
+                <h2 class="text-center">Registration</h2>
+            </div>
+            <div class="card-body">
+                <form action="/Home/CreateData" method="post">
+                    <input type="text" placeholder="Name" name="name" required class="form-control col-md-12" />
+                    <input type="email" placeholder="Email" name="email" required class="form-control" />
+                    <input type="password" placeholder="Password" name="password" required class="form-control" />
+                    <input type="password" placeholder="Re-Enter Password" name="cpassword" required class="form-control" />
+                    <input type="text" placeholder="Phone" name="phone" required class="form-control" />
+                    <input type="text" placeholder="Address" name="address" required class="form-control" />
+                    
+                    <div>
+                        <br />
+                        <input type="submit" value="Register" class="btn btn-primary " />
+                    </div>
+                </form>
+
+            </div>
+            <div class="card-footer">
+                Already have an account?
+                <a href="/Home/Login">Login Now</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br />
+<br />
+<br />
+<br />

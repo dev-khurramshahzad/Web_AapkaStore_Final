@@ -1,0 +1,42 @@
+﻿@model IEnumerable<AapkaStore.Models.Category>
+
+@{
+    ViewBag.Title = "Shops";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!-- blog -->
+<section class="blog py-5" id="blog">
+    <div class="container py-xl-5 py-lg-3">
+        <hr />
+        <h3 class="title-w3ls text-center text-bl mb-5">Our Categories</h3>
+        <div class="row">
+            <!-- blog grid -->
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-4 col-md-6 px-md-2">
+                    <div class="card">
+                        <div class="card-header p-0 position-relative">
+                            <a href="/Home/Items/@item.CatId">
+                                <img style="height:250px" class="card-img-bottom" src="/AppData/@item.Image" alt="Card image cap">
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <h6 class="let-spa mb-3">@item.Details</h6>
+                            <h5 class="blog-title card-title">
+                                <a href="/Home/Items/@item.CatId">
+                                    @item.Name
+                                </a>
+                            </h5>
+
+                        </div>
+                    </div>
+                </div>
+            }
+            <!-- //blog grid -->
+
+        </div>
+    </div>
+</section>
+<!-- //blog -->
